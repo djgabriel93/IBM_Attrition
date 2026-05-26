@@ -25,7 +25,6 @@ O repositório está organizado de forma modular para facilitar o entendimento d
 * **`01_gd_attrition_eda.ipynb`**: Análise Exploratória de Dados (EDA), limpeza, análise univariada/bivariada e comportamento das variáveis categóricas e numéricas.
 * **`01_gd_attrition_modelos.ipynb`**: Engenharia de atributos e criação de *pipelines* iniciais de pré-processamento (`OneHotEncoding`, `PowerTransformer`).
 * **`01_gd_attrition_modelos_rus.ipynb`**: Balanceamento de classes utilizando a técnica de *Random Under Sampling* (RUS) para tratar a assimetria do atrito.
-* **`02_modelos_parte_03.ipynb`**: Ajuste fino de hiperparâmetros, avaliação de métricas (`Recall`, `F1-Score`) e exportação do modelo final.
 * **`home.py`**: Arquivo principal contendo a interface visual da aplicação construída com Streamlit.
 
 ---
