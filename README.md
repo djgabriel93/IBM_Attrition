@@ -6,6 +6,8 @@
 
 Uma aplicação completa de Machine Learning de ponta a ponta para prever a probabilidade de desligamento (turnover) de funcionários, utilizando dados de Recursos Humanos. O projeto abrange desde a Análise Exploratória de Dados (EDA) até o deploy de uma interface interativa.
 
+![Demonstração do App](referencias/demonstracao.gif)
+
 ---
 
 ## 🎯 Visão Geral do Projeto
@@ -13,6 +15,7 @@ Uma aplicação completa de Machine Learning de ponta a ponta para prever a prob
 O custo de substituição de um funcionário pode ser extremamente alto para as empresas. Este projeto visa identificar proativamente os fatores que levam ao atrito e prever quais funcionários têm maior risco de deixar a companhia, permitindo que a equipe de RH tome decisões baseadas em dados.
 
 **Atenção à Metodologia:** Todo o pipeline de dados, desde a extração até a modelagem final, foi construído **estritamente utilizando Python** (Pandas, Scikit-Learn), sem a utilização de SQL ou ferramentas externas de banco de dados neste escopo.
+
 
 ---
 
