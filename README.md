@@ -6,7 +6,10 @@
 
 Uma aplicação completa de Machine Learning de ponta a ponta para prever a probabilidade de desligamento (turnover) de funcionários, utilizando dados de Recursos Humanos. O projeto abrange desde a Análise Exploratória de Dados (EDA) até o deploy de uma interface interativa.
 
-![Demonstração do App](referencias/demonstracao.gif)
+[![Demonstração do App - Clique para testar](referencias/demonstracao.gif)](https://ibmattrition-app.streamlit.app/)
+
+[Clique para testar o App](https://ibmattrition-app.streamlit.app/)
+
 
 ---
 
