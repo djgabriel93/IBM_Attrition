@@ -1,86 +1,69 @@
-# Modelo de projeto de ciência de dados
+# 🏢 Previsão de Desligamento de Funcionários (Employee Attrition)
 
-Modelo de projeto de ciência de dados para ser utilizado como referência em projetos
-futuros. Desenvolvido por mim, [Francisco Bustamante](https://github.com/chicolucio),
-para alunos iniciantes em ciência de dados de meus cursos e mentorias.
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)](https://streamlit.io/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.8.0-orange.svg)](https://scikit-learn.org/)
 
-Inspiração: [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+Uma aplicação completa de Machine Learning de ponta a ponta para prever a probabilidade de desligamento (turnover) de funcionários, utilizando dados de Recursos Humanos. O projeto abrange desde a Análise Exploratória de Dados (EDA) até o deploy de uma interface interativa.
 
-Clique no botão **Use this template** para criar um novo repositório com base neste modelo.
+---
 
-## Organização do projeto
+## 🎯 Visão Geral do Projeto
 
+O custo de substituição de um funcionário pode ser extremamente alto para as empresas. Este projeto visa identificar proativamente os fatores que levam ao atrito e prever quais funcionários têm maior risco de deixar a companhia, permitindo que a equipe de RH tome decisões baseadas em dados.
+
+**Atenção à Metodologia:** Todo o pipeline de dados, desde a extração até a modelagem final, foi construído **estritamente utilizando Python** (Pandas, Scikit-Learn), sem a utilização de SQL ou ferramentas externas de banco de dados neste escopo.
+
+---
+
+## 📂 Estrutura do Repositório
+
+O repositório está organizado de forma modular para facilitar o entendimento de cada etapa do pipeline:
+
+* **`01_sobre_a_base.md`**: Contextualização do problema de negócio, objetivos do projeto e insights estratégicos extraídos.
+* **`02_dicionario_de_dados-ptbr.md`**: Descrição detalhada, tipo de dado e mapeamento de categorias de todas as variáveis disponíveis.
+* **`01_gd_attrition_eda.ipynb`**: Análise Exploratória de Dados (EDA), limpeza, análise univariada/bivariada e comportamento das variáveis categóricas e numéricas.
+* **`01_gd_attrition_modelos.ipynb`**: Engenharia de atributos e criação de *pipelines* iniciais de pré-processamento (`OneHotEncoding`, `PowerTransformer`).
+* **`01_gd_attrition_modelos_rus.ipynb`**: Balanceamento de classes utilizando a técnica de *Random Under Sampling* (RUS) para tratar a assimetria do atrito.
+* **`02_modelos_parte_03.ipynb`**: Ajuste fino de hiperparâmetros, avaliação de métricas (`Recall`, `F1-Score`) e exportação do modelo final.
+* **`home.py`**: Arquivo principal contendo a interface visual da aplicação construída com Streamlit.
+
+---
+
+## ⚙️ Modelagem e Performance
+
+O modelo final foi construído utilizando **Regressão Logística**, escolhido por sua excelente interpretabilidade e rapidez em cenários de inferência. 
+
+**Técnicas aplicadas no Pipeline:**
+* **PowerTransformer:** Utilizado em variáveis numéricas assimétricas (como `RendaMensal`) para forçar uma distribuição normal, otimizando o cálculo dos coeficientes logísticos.
+* **MinMaxScaler / StandardScaler:** Padronização de escalas das *features*.
+* **Random Under Sampling (RUS):** Tratamento do desbalanceamento da variável alvo, equalizando a proporção de funcionários que saíram e ficaram na empresa durante o treinamento.
+
+---
+
+## 🚀 Como Executar o Projeto Localmente
+
+**1. Clone o repositório**
+
+```bash
+git clone https://github.com/djgabriel93/IBM_Attrition.git
+cd IBM_Attrition
 ```
-├── .env               <- Arquivo de variáveis de ambiente (não versionar)
-├── .gitignore         <- Arquivos e diretórios a serem ignorados pelo Git
-├── ambiente.yml       <- O arquivo de requisitos para reproduzir o ambiente de análise
-├── LICENSE            <- Licença de código aberto se uma for escolhida
-├── README.md          <- README principal para desenvolvedores que usam este projeto.
-|
-├── dados              <- Arquivos de dados para o projeto.
-|
-├── modelos            <- Modelos treinados e serializados, previsões de modelos ou resumos de modelos
-|
-├── notebooks          <- Cadernos Jupyter. A convenção de nomenclatura é um número (para ordenação),
-│                         as iniciais do criador e uma descrição curta separada por `-`, por exemplo
-│                         `01-fb-exploracao-inicial-de-dados`.
-│
-|   └──src             <- Código-fonte para uso neste projeto.
-|      │
-|      ├── __init__.py  <- Torna um módulo Python
-|      ├── config.py    <- Configurações básicas do projeto
-|      └── graficos.py  <- Scripts para criar visualizações exploratórias e orientadas a resultados
-|
-├── referencias        <- Dicionários de dados, manuais e todos os outros materiais explicativos.
-|
-├── relatorios         <- Análises geradas em HTML, PDF, LaTeX, etc.
-│   └── imagens        <- Gráficos e figuras gerados para serem usados em relatórios
+
+**2. Crie e ative um ambiente virtual (recomendado via Conda):**
+```bash
+conda create -n machine_learning
+conda activate machine_learning
 ```
 
-## Configuração do ambiente
+**3. Instale as dependências:**
+```bash
+pip install -r requirements.txt
+```
 
-1. Faça o clone do repositório que será criado a partir deste modelo.
+**4. Execute a aplicação web:**
+```bash
+streamlit run home.py
+```
 
-    ```bash
-    git clone ENDERECO_DO_REPOSITORIO
-    ```
-
-2. Crie um ambiente virtual para o seu projeto utilizando o gerenciador de ambientes de sua preferência.
-
-    a. Caso esteja utilizando o `conda`, exporte as dependências do ambiente para o arquivo `ambiente.yml`:
-
-      ```bash
-      conda env export > ambiente.yml
-      ```
-
-    b. Caso esteja utilizando outro gerenciador de ambientes, exporte as dependências
-    para o arquivo `requirements.txt` ou outro formato de sua preferência. Adicione o
-    arquivo ao controle de versão, removendo o arquivo `ambiente.yml`.
-
-3. Verifique o arquivo `notebooks/01-fb-exemplo.ipynb` para exemplos
-de uso do código.
-4. Renomeie o arquivo `notebooks/01-fb-exemplo.ipynb` para um nome
-mais apropriado ao seu projeto. E siga a convenção de nomenclatura para os demais
-notebooks.
-5. Remova arquivos de exemplo e adicione os arquivos de dados e notebooks do seu
-projeto.
-6. Verifique o arquivo `notebooks/src/config.py` para configurações básicas do projeto.
-Modifique conforme necessário, adicionando ou removendo caminhos de arquivos e
-diretórios.
-7. Atualize o arquivo `referencias/01_dicionario_de_dados.md` com o dicionário de dados
-do seu projeto.
-8. Atualize o `README.md` com informações sobre o seu projeto.
-9. Adicione uma licença ao projeto. Clique
-[aqui](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
-se precisar de ajuda para escolher uma licença.
-10. Renomeie o arquivo `.env.exemplo` para `.env`
-11. Adicione variáveis de ambiente sensíveis ao arquivo `.env`.
-
-Por padrão, o arquivo `.gitignore` já está configurado para ignorar arquivos de dados e
-arquivos de Notebook (para aqueles que usam ferramentas como
-[Jupytext](https://jupytext.readthedocs.io/en/latest/) e similares). Adicione ou remova
-outros arquivos e diretórios do `.gitignore` conforme necessário. Caso deseje adicionar
-forçadamente um Notebook ao controle de versão, faça um commit forçado com o
-comando `git add --force NOME_DO_ARQUIVO.ipynb`.
-
-Para mais informações sobre como usar Git e GitHub, [clique aqui](https://cienciaprogramada.com.br/2021/09/guia-definitivo-git-github/). Sobre ambientes virtuais, [clique aqui](https://cienciaprogramada.com.br/2020/08/ambiente-virtual-projeto-python/).
+Acesse http://localhost:8501 no seu navegador para interagir com o modelo de previsão.

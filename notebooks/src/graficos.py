@@ -7,9 +7,9 @@ PALETTE = "coolwarm"
 SCATTER_ALPHA = 0.2
 
 
-def plot_coeficientes(df_coefs, tituto="Coeficientes"):
+def plot_coeficientes(df_coefs, titulo="Coeficientes"):
     df_coefs.plot.barh(figsize=(10, 15))
-    plt.title(tituto)
+    plt.title(titulo)
     plt.axvline(x=0, color=".5")
     plt.xlabel("Coeficientes")
     plt.gca().get_legend().remove()

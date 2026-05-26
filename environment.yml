@@ -1,0 +1,17 @@
+name: machine_learning
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.5
+  - numpy
+  - pyarrow
+  - seaborn
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - ipykernel
+  - imbalanced-learn
+  - py-xgboost
+  - nomkl
+prefix: C:\Users\gabri\anaconda3\envs\machine_learning
